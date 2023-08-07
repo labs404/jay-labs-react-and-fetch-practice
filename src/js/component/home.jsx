@@ -1,25 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+	const [catFact, setCatFact] = useState("");
+	const [factLength, setFactLength] = useState(0);
+
+	const fetchNewFact = () => {
+		fetch("https://catfact.ninja/fact")
+		.then(response => response.json())
+		.then(data => {
+			setCatFact(data.fact);
+			console.log(data.fact);
+			setFactLength(data.length);
+			console.log(data.length);
+		})
+		.catch(error => console.log("yuge error.. YUGE! \n", error));
+	}
+
+	useEffect(() => {
+		fetchNewFact();
+	},[])
+
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<>
+			<button onClick={fetchNewFact}>Click for a new fact</button>
+			<h1>Catfact App</h1>
+			<h2>Here's your fact:</h2>
+			<p>{catFact}</p>
+			<h2>Here's the length of this fact:</h2>
+			<p>{factLength}</p>
+		</>
 	);
 };
 
