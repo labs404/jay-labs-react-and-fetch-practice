@@ -6,7 +6,17 @@ const Home = () => {
 
 	const fetchNewFact = () => {
 		fetch("https://catfact.ninja/fact")
-		.then(response => response.json())
+		// .then(response => response.json())
+		.then(response => {
+			// if (response.status === 200) {
+			if (response.ok) {
+				console.log("The response is successful.");
+				return response.json()
+			}
+			else {
+				throw new Error(response.statusText)
+			}
+		})
 		.then(data => {
 			setCatFact(data.fact);
 			console.log(data.fact);
@@ -19,6 +29,7 @@ const Home = () => {
 	useEffect(() => {
 		fetchNewFact();
 	},[])
+
 
 
 	return (

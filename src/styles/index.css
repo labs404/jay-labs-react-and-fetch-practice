@@ -9,3 +9,11 @@ body {
 p {
     color: white;
 }
+
+.predicted-age-visible {
+    visibility: visible;
+}
+
+.predicted-age-hidden {
+    visibility: hidden;
+}
