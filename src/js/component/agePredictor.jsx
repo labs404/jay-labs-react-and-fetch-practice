@@ -39,8 +39,10 @@ const AgePredictor = () => {
                 onChange={(e) => setName(e.target.value)}
                 value={name}
             />
-            <button onClick={validateSubmission}>Click to Predict Age</button>
-            <button onClick={() => setResult(false)}>Clear</button>
+            &nbsp;
+            <button className="btn btn-secondary border border-dark" onClick={validateSubmission}>Click to Predict Age</button>
+            &nbsp;
+            <button className="btn btn-secondary border border-dark" onClick={() => setResult(false)}>Clear</button>
             <h2 className={result ? "predicted-age-visible" : "predicted-age-hidden"}>{name} is {age} years old.</h2>
         </>
     );

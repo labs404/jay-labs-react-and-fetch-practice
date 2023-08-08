@@ -17,3 +17,8 @@ p {
 .predicted-age-hidden {
     visibility: hidden;
 }
+
+input {
+    background-color: #444444;
+    color: #999999;
+}
